@@ -1,0 +1,21 @@
+'context-menu':
+  'atom-text-editor': [
+    {
+      'label': 'Toggle css-spy'
+      'command': 'css-spy:toggle'
+    }
+  ]
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'css-spy'
+      'submenu': [
+        {
+          'label': 'Toggle'
+          'command': 'css-spy:toggle'
+        }
+      ]
+    ]
+  }
+]

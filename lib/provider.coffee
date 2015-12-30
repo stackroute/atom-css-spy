@@ -29,7 +29,6 @@ module.exports =
         console.log err
         continue
       cssParseObj = css.parse cssText
-      # console.log cssParseObj
       for oneRule in cssParseObj.stylesheet.rules when cssParseObj.type is "stylesheet" and oneRule.type is "rule"
         for oneSelector in oneRule.selectors when wordList[filePath].listArray.indexOf(oneSelector) is -1
           wordList[filePath].listArray = wordList[filePath].listArray.concat oneSelector.split(' ')
@@ -47,6 +46,6 @@ module.exports =
             sugg.insertWords wordList[editor.getPath()].listArray
             list = sugg.wordsWithPrefix "."+prefix
             suggestions = []
-            suggestions.push({"text": eachWord?.substring(1,list[0]?.length), "type": "class"}) for eachWord in list if list?
+            suggestions.push({"text": eachWord?.substring(1,eachWord?.length), "type": "class"}) for eachWord in list if list?
             resolve suggestions
           )

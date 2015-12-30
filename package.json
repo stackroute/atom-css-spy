@@ -1,8 +1,8 @@
 {
-  "name": "atom-css-spy",
-  "main": "./lib/atom-css-spy",
+  "name": "css-spy",
+  "main": "./lib/css-spy",
   "version": "0.1.0",
-  "description": "A provider for autocomplete plus of atom to provide suggestions for html file based on the files included",
+  "description": "A package to suggest CSS classes in HTML projects",
   "keywords": [
     "atom",
     "html",
@@ -16,13 +16,13 @@
   },
   "contributors": [
     {
-      "name": "Mukund",
-      "email": ""
+      "name": "Mukund Krishnamurthy",
+      "email": "mukund.kri@gmail.com"
     }
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/stackroute/atom-css-spy.git"
+    "url": "https://github.com/stackroute/atom-css-spy"
   },
   "license": "MIT",
   "engines": {
