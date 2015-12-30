@@ -31,9 +31,15 @@ module.exports =
         if !(currentPath+obj.match[3] in provider.wordList[editor.getPath()].cssFiles or obj.match[3] in provider.wordList[editor.getPath()].cssFiles)
           provider.makeWordList(editor)
         )) if atom.workspace.getActiveTextEditor()
-
+    @subscriptions.add atom.commands.add 'atom-workspace', 'atom-css-spy:toggle': => @toggle()
   getProvider: ->
     provider
+
+  toggle: ->
+    if provider.inclusionPriority == 5
+      provider.inclusionPriority = -1
+    else
+      provider.inclusionPriority = 5
 
   deactivate: ->
     handle.close() for handle in @fsHandle
