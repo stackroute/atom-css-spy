@@ -1,0 +1,47 @@
+{
+  "name": "atom-css-spy",
+  "main": "./lib/atom-css-spy",
+  "version": "0.1.0",
+  "description": "A provider for autocomplete plus of atom to provide suggestions for html file based on the files included",
+  "keywords": [
+    "atom",
+    "html",
+    "css",
+    "autocomplete",
+    "suggestions"
+  ],
+  "author": {
+    "name": "Prateek Reddy",
+    "email": "prateekreddyy@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "Mukund",
+      "email": ""
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stackroute/atom-css-spy.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "bugs": {
+    "url": "https://github.com/stackroute/atom-css-spy/issues"
+  },
+  "readme": "",
+  "readmeFilename": "README.md",
+  "homepage": "https://github.com/stackroute/atom-css-spy#readme",
+  "providedServices": {
+    "autocomplete.provider": {
+      "versions": {
+        "2.0.0":"getProvider"
+      }
+    }
+  },
+  "dependencies": {
+      "css" : "2.2.1"
+  }
+}
