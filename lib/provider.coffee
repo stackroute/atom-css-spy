@@ -1,6 +1,7 @@
 css = require 'css'
 fs = require 'fs'
 SuggestionTree = require './trie'
+path = require 'path'
 wordList = {}
 
 module.exports =
@@ -16,17 +17,21 @@ module.exports =
     wordList[filePath].cssFiles = []
     wordList[filePath].listArray = []
     wordList[filePath].suggTrie = new SuggestionTree()
-    currentPath = filePath.substring 0,filePath.lastIndexOf("\\")+1
+    currentPath = path.dirname filePath
     editor.scan(/stylesheet/g, (object) ->
       line = object.lineText
       link = line.match(/[\w._/]+\.css/)[0]
-      wordList[filePath].cssFiles.push(currentPath+link)
+      currentPath = currentPath + '/' unless link[0] == '/'
+      try
+        fs.accessSync currentPath+link, fs.R_OK
+        wordList[filePath].cssFiles.push(currentPath+link)
+      catch err
+        # no such css file exists
       )
     for file in wordList[filePath].cssFiles when wordList[filePath].cssFiles?
       try
         cssText = fs.readFileSync file, 'utf8'
       catch err
-        console.log err
         continue
       cssParseObj = css.parse cssText
       for oneRule in cssParseObj.stylesheet.rules when cssParseObj.type is "stylesheet" and oneRule.type is "rule"
@@ -36,13 +41,13 @@ module.exports =
 
   getSuggestions: ({editor, bufferPosition, scopeDescriptor, prefix, activatedManually}) ->
     new Promise (resolve) ->
-      console.log prefix
       if prefix == ""
         resolve []
       else
         editor.buffer.backwardsScanInRange(/\bclass\s?=\s?(?:"|')[a-z][\w-:]*/i, [[0,0], [bufferPosition.row,bufferPosition.column]], (obj) ->
           if obj.range.end.column is bufferPosition.column
             list = []
+            console.log wordList[editor.getPath()]
             sugg = wordList[editor.getPath()].suggTrie
             sugg.insertWords wordList[editor.getPath()].listArray
             list = sugg.wordsWithPrefix "."+prefix

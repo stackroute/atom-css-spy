@@ -19,10 +19,10 @@ module.exports =
           )
         @subscriptions.add(editor.onDidChange (obj) ->
           #TODO-v2: have to include for absolute path and urls
-          console.log editor
-          currentPath = editor.getPath().substring 0,editor.getPath().lastIndexOf("\\")+1
+          currentPath = path.dirname editor.getPath()
           #TODO-v2: have to combine both the regex tests
-          text = editor.buffer.scanInRange(/<\s?link\s?rel=\s?('|")\s?stylesheet\s?\1\s?href\s?=\s?('|")([\w-:.\\/_]*)\2/g, [[obj.start,0], [obj.end+1,0]], (obj) ->
+          text = editor.buffer.scanInRange(/<\s?link\s?rel=\s?('|")\s?stylesheet\s?\1\s?href\s?=\s?('|")([\w-:.\\/_]*)\2/g, [[obj.start,0], [obj.end+obj.screenDelta+1,0]], (obj) ->
+            currentPath = currentPath + '/' unless obj.match[3][0] == '/'
             if !(currentPath+obj.match[3] in provider.wordList[editor.getPath()].cssFiles or obj.match[3] in provider.wordList[editor.getPath()].cssFiles)
               provider.makeWordList(editor)
             )
