@@ -22,7 +22,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/stackroute/atom-css-spy"
+    "url": "git+https://github.com/stackroute/atom-css-spy.git"
   },
   "license": "MIT",
   "engines": {
@@ -31,7 +31,7 @@
   "bugs": {
     "url": "https://github.com/stackroute/atom-css-spy/issues"
   },
-  "readme": "",
+  "readme": "#CSS-SPY\n###(This is an Alpha version released for developer feedback - Do not use for any meaningful work)\nA package to suggest CSS classes in HTML projects\n\n\nCSS-SPY goes through CSS files linked in open HTML files within Atom, identifies classes and uses these to auto-suggest the appropriate class in HTML. CSS-SPY automatically rebuilds its list of classes to be suggested either when the CSS files are edited or if a change in the linked files is made. Suggestions are available only in HTML files. CSS-SPY is a service provider to and builds on the capabilities of auto complete plus. When CSS-SPY is turned off, auto-complete plus is given a higher priority.\n\n## Installation\n\n* In Atom, open *Preferences* (*Settings* on Windows)\n* Go to *Install* section\n* Search for `css-spy` package. Once it found, click `Install` button to install package.\n\n### Manual installation\n\nYou can install the latest CSS-SPY version manually from console:\n\n```bash\ncd ~/.atom/packages\ngit clone https://github.com/stackroute/atom-css-spy\ncd atom-css-spy\nnpm install\n```\n\nThen restart Atom editor.\n\n##Key bindings:\n\nCTRL-ALT-Y : toggles CSS-SPY on or off.\n",
   "readmeFilename": "README.md",
   "homepage": "https://github.com/stackroute/atom-css-spy#readme",
   "providedServices": {
@@ -43,5 +43,174 @@
   },
   "dependencies": {
     "css": "2.2.1"
+  },
+  "_id": "css-spy@0.2.0",
+  "_shasum": "09722728b959533c2f421b41476a16f157845260",
+  "_resolved": "file:..\\d-1151130-6024-1txo17m\\package.tgz",
+  "_from": "..\\d-1151130-6024-1txo17m\\package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [
+      {
+        "name": "css",
+        "version": "2.2.1",
+        "path": "node_modules\\css\\index.js"
+      },
+      {
+        "name": "inherits",
+        "version": "2.0.1",
+        "path": "node_modules\\css\\node_modules\\inherits\\inherits.js"
+      },
+      {
+        "name": "source-map",
+        "version": "0.1.43",
+        "path": "node_modules\\css\\node_modules\\source-map\\lib\\source-map.js"
+      },
+      {
+        "name": "amdefine",
+        "version": "1.0.0",
+        "path": "node_modules\\css\\node_modules\\source-map\\node_modules\\amdefine\\amdefine.js"
+      },
+      {
+        "name": "source-map-resolve",
+        "version": "0.3.1",
+        "path": "node_modules\\css\\node_modules\\source-map-resolve\\lib\\source-map-resolve-node.js"
+      },
+      {
+        "name": "atob",
+        "version": "1.1.3",
+        "path": "node_modules\\css\\node_modules\\source-map-resolve\\node_modules\\atob\\index.js"
+      },
+      {
+        "name": "resolve-url",
+        "version": "0.2.1",
+        "path": "node_modules\\css\\node_modules\\source-map-resolve\\node_modules\\resolve-url\\resolve-url.js"
+      },
+      {
+        "name": "source-map-url",
+        "version": "0.3.0",
+        "path": "node_modules\\css\\node_modules\\source-map-resolve\\node_modules\\source-map-url\\source-map-url.js"
+      },
+      {
+        "name": "urix",
+        "version": "0.1.0",
+        "path": "node_modules\\css\\node_modules\\urix\\index.js"
+      }
+    ],
+    "extensions": {
+      ".coffee": [
+        "lib\\css-spy.coffee",
+        "lib\\provider.coffee",
+        "lib\\trie.coffee"
+      ],
+      ".js": [
+        "node_modules\\css\\index.js",
+        "node_modules\\css\\lib\\parse\\index.js",
+        "node_modules\\css\\lib\\stringify\\compiler.js",
+        "node_modules\\css\\lib\\stringify\\compress.js",
+        "node_modules\\css\\lib\\stringify\\identity.js",
+        "node_modules\\css\\lib\\stringify\\index.js",
+        "node_modules\\css\\lib\\stringify\\source-map-support.js",
+        "node_modules\\css\\node_modules\\inherits\\inherits.js",
+        "node_modules\\css\\node_modules\\inherits\\inherits_browser.js",
+        "node_modules\\css\\node_modules\\inherits\\test.js",
+        "node_modules\\css\\node_modules\\source-map\\build\\assert-shim.js",
+        "node_modules\\css\\node_modules\\source-map\\build\\mini-require.js",
+        "node_modules\\css\\node_modules\\source-map\\build\\suffix-browser.js",
+        "node_modules\\css\\node_modules\\source-map\\build\\test-prefix.js",
+        "node_modules\\css\\node_modules\\source-map\\build\\test-suffix.js",
+        "node_modules\\css\\node_modules\\source-map\\lib\\source-map\\array-set.js",
+        "node_modules\\css\\node_modules\\source-map\\lib\\source-map\\base64-vlq.js",
+        "node_modules\\css\\node_modules\\source-map\\lib\\source-map\\base64.js",
+        "node_modules\\css\\node_modules\\source-map\\lib\\source-map\\binary-search.js",
+        "node_modules\\css\\node_modules\\source-map\\lib\\source-map\\mapping-list.js",
+        "node_modules\\css\\node_modules\\source-map\\lib\\source-map\\source-map-consumer.js",
+        "node_modules\\css\\node_modules\\source-map\\lib\\source-map\\source-map-generator.js",
+        "node_modules\\css\\node_modules\\source-map\\lib\\source-map\\source-node.js",
+        "node_modules\\css\\node_modules\\source-map\\lib\\source-map\\util.js",
+        "node_modules\\css\\node_modules\\source-map\\lib\\source-map.js",
+        "node_modules\\css\\node_modules\\source-map\\Makefile.dryice.js",
+        "node_modules\\css\\node_modules\\source-map\\node_modules\\amdefine\\amdefine.js",
+        "node_modules\\css\\node_modules\\source-map\\node_modules\\amdefine\\intercept.js",
+        "node_modules\\css\\node_modules\\source-map-resolve\\generate-source-map-resolve.js",
+        "node_modules\\css\\node_modules\\source-map-resolve\\lib\\resolve-url.js",
+        "node_modules\\css\\node_modules\\source-map-resolve\\lib\\source-map-resolve-node.js",
+        "node_modules\\css\\node_modules\\source-map-resolve\\node_modules\\atob\\bin\\atob.js",
+        "node_modules\\css\\node_modules\\source-map-resolve\\node_modules\\atob\\index.js",
+        "node_modules\\css\\node_modules\\source-map-resolve\\node_modules\\atob\\test.js",
+        "node_modules\\css\\node_modules\\source-map-resolve\\node_modules\\resolve-url\\resolve-url.js",
+        "node_modules\\css\\node_modules\\source-map-resolve\\node_modules\\source-map-url\\source-map-url.js",
+        "node_modules\\css\\node_modules\\source-map-resolve\\source-map-resolve.js",
+        "node_modules\\css\\node_modules\\urix\\index.js"
+      ],
+      ".json": [
+        "node_modules\\css\\node_modules\\inherits\\package.json",
+        "node_modules\\css\\node_modules\\source-map\\node_modules\\amdefine\\package.json",
+        "node_modules\\css\\node_modules\\source-map\\package.json",
+        "node_modules\\css\\node_modules\\source-map-resolve\\bower.json",
+        "node_modules\\css\\node_modules\\source-map-resolve\\component.json",
+        "node_modules\\css\\node_modules\\source-map-resolve\\node_modules\\atob\\package.json",
+        "node_modules\\css\\node_modules\\source-map-resolve\\node_modules\\resolve-url\\bower.json",
+        "node_modules\\css\\node_modules\\source-map-resolve\\node_modules\\resolve-url\\component.json",
+        "node_modules\\css\\node_modules\\source-map-resolve\\node_modules\\resolve-url\\package.json",
+        "node_modules\\css\\node_modules\\source-map-resolve\\node_modules\\source-map-url\\bower.json",
+        "node_modules\\css\\node_modules\\source-map-resolve\\node_modules\\source-map-url\\component.json",
+        "node_modules\\css\\node_modules\\source-map-resolve\\node_modules\\source-map-url\\package.json",
+        "node_modules\\css\\node_modules\\source-map-resolve\\package.json",
+        "node_modules\\css\\node_modules\\urix\\package.json",
+        "node_modules\\css\\package.json",
+        "package.json"
+      ]
+    },
+    "folders": [
+      {
+        "paths": [
+          "lib",
+          ""
+        ],
+        "dependencies": {
+          "css": "2.2.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\css",
+          "node_modules\\css\\lib\\parse",
+          "node_modules\\css\\lib\\stringify"
+        ],
+        "dependencies": {
+          "source-map": "^0.1.38",
+          "source-map-resolve": "^0.3.0",
+          "urix": "^0.1.0",
+          "inherits": "^2.0.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\css\\node_modules\\source-map\\build",
+          "node_modules\\css\\node_modules\\source-map\\lib\\source-map",
+          "node_modules\\css\\node_modules\\source-map\\lib",
+          "node_modules\\css\\node_modules\\source-map",
+          "node_modules\\css\\node_modules\\source-map\\test",
+          "node_modules\\css\\node_modules\\source-map\\test\\source-map"
+        ],
+        "dependencies": {
+          "amdefine": ">=0.0.4"
+        }
+      },
+      {
+        "paths": [
+          "node_modules\\css\\node_modules\\source-map-resolve",
+          "node_modules\\css\\node_modules\\source-map-resolve\\lib",
+          "node_modules\\css\\node_modules\\source-map-resolve\\test"
+        ],
+        "dependencies": {
+          "source-map-url": "~0.3.0",
+          "atob": "~1.1.0",
+          "urix": "~0.1.0",
+          "resolve-url": "~0.2.1"
+        }
+      }
+    ]
   }
 }

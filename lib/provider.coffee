@@ -36,6 +36,7 @@ module.exports =
 
   getSuggestions: ({editor, bufferPosition, scopeDescriptor, prefix, activatedManually}) ->
     new Promise (resolve) ->
+      console.log prefix
       if prefix == ""
         resolve []
       else
