@@ -47,7 +47,6 @@ module.exports =
         editor.buffer.backwardsScanInRange(/\bclass\s?=\s?(?:"|')[a-z][\w-:]*/i, [[0,0], [bufferPosition.row,bufferPosition.column]], (obj) ->
           if obj.range.end.column is bufferPosition.column
             list = []
-            console.log wordList[editor.getPath()]
             sugg = wordList[editor.getPath()].suggTrie
             sugg.insertWords wordList[editor.getPath()].listArray
             list = sugg.wordsWithPrefix "."+prefix
