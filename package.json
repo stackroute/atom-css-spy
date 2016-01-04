@@ -1,7 +1,7 @@
 {
   "name": "css-spy",
   "main": "./lib/css-spy",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A package to suggest CSS classes in HTML projects",
   "keywords": [
     "atom",
