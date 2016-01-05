@@ -20,7 +20,10 @@ module.exports =
     currentPath = path.dirname filePath
     editor.scan(/stylesheet/g, (object) ->
       line = object.lineText
-      link = line.match(/[\w._/]+\.css/)[0]
+      if line.match(/[\w._/]+\.css/)
+        link = line.match(/[\w._/]+\.css/)[0]
+      else
+        return
       currentPath = currentPath + '/' unless link[0] == '/'
       try
         fs.accessSync currentPath+link, fs.R_OK

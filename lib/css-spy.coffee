@@ -25,11 +25,24 @@ module.exports =
             currentPath = currentPath + '/' unless obj.match[3][0] == '/'
             if !(currentPath+obj.match[3] in provider.wordList[editor.getPath()].cssFiles or obj.match[3] in provider.wordList[editor.getPath()].cssFiles)
               provider.makeWordList(editor)
+              try
+                fs.accessSync currentPath+obj.match[3], fs.R_OK
+                fs.watch currentPath+obj.match[3], (event) ->
+                  provider.makeWordList(editor)
+              catch err
+
             )
           text = editor.buffer.scanInRange(/<\s?link\s?href\s?=\s?('|")([\w-:.\\/_]*)\2\s?rel=\s?('|")\s?stylesheet\s?\1\s?/g, [[obj.start,0], [obj.end+1,0]], (obj) ->
+            currentPath = currentPath + '/' unless obj.match[3][0] == '/'
             if !(currentPath+obj.match[3] in provider.wordList[editor.getPath()].cssFiles or obj.match[3] in provider.wordList[editor.getPath()].cssFiles)
               provider.makeWordList(editor)
-              )) if editor
+              try
+                fs.accessSync currentPath+obj.match[3], fs.R_OK
+                fs.watch currentPath+obj.match[3], (event) ->
+                  provider.makeWordList(editor)
+              catch err
+
+            )) if editor
 
 
     @subscriptions.add atom.commands.add 'atom-workspace', 'css-spy:toggle': => @toggle()
