@@ -1,5 +1,5 @@
 #CSS-SPY
-###(This is an Beta version)
+###(In Beta)
 A package to suggest CSS classes in HTML projects
 
 
