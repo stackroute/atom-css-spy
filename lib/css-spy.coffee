@@ -4,7 +4,7 @@ fs = require 'fs'
 cson = require 'cson'
 {CompositeDisposable} = require 'atom'
 
-classLoad = cson.load atom.packages.getLoadedPackage('css-spy').path+'/grammar/class-add.cson'
+classLoad = cson.load atom.packages.getPackageDirPaths()+'/css-spy/grammar/class-add.cson'
 
 module.exports =
   subscriptions : null
