@@ -13,6 +13,7 @@ class SuggestionTree
     @insertWord(word) for word in words
 
   search : (word, nodeSearch) ->
+    return @head unless word?.length or !nodeSearch
     temp = @head
     count = 0
     for letter in word
@@ -33,10 +34,8 @@ class SuggestionTree
     for child in Object.keys(node)
       if node[child].word?
         words.push node[child].word
-        delete node[child].word
-      else
-        words.push node[child] if child is "word"
-      words = words.concat @DFS node[child] unless node[child].word? or child is "word"
+      words.push node[child] if child is "word"
+      words = words.concat @DFS node[child] unless child is "word"
     words
 
   wordsWithPrefix : (prefix) ->

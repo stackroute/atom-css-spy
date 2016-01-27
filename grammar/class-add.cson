@@ -1,0 +1,183 @@
+'tag-class-attribute':
+    'begin': '\\b(class)\\b\\s*(=)\\s*'
+    'captures':
+      '1':
+        'name': 'entity.other.attribute-name.class.html'
+      '2':
+        'name': 'punctuation.separator.key-value.html'
+    'end': '(?<=\'|")|(?=\\s|>)'
+    'name': 'meta.attribute-with-value.class.html'
+    'patterns': [
+      {
+        'begin': '"'
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.string.begin.html'
+        'contentName': 'meta.toc-list.class.html'
+        'end': '"'
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.string.end.html'
+        'name': 'string.quoted.double.html'
+        'patterns': [
+          {
+            'include': '#embedded-code'
+          }
+          {
+            'include': '#entities'
+          }
+        ]
+      }
+      {
+        'begin': '\''
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.string.begin.html'
+        'contentName': 'meta.toc-list.class.html'
+        'end': '\''
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.string.end.html'
+        'name': 'string.quoted.single.html'
+        'patterns': [
+          {
+            'include': '#embedded-code'
+          }
+          {
+            'include': '#entities'
+          }
+        ]
+      }
+      {
+        'include': '#unquoted-attribute'
+      }
+    ]
+
+'tag-href-attribute':
+    'begin': '\\b(href)\\b\\s*(=)\\s*'
+    'captures':
+      '1':
+        'name': 'entity.other.attribute-name.href.html'
+      '2':
+        'name': 'punctuation.separator.key-value.html'
+    'end': '(?<=\'|")|(?=\\s|>)'
+    'name': 'meta.attribute-with-value.href.html'
+    'patterns': [
+      {
+        'begin': '"'
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.string.begin.html'
+        'contentName': 'meta.toc-list.href.html'
+        'end': '"'
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.string.end.html'
+        'name': 'string.quoted.double.html'
+        'patterns': [
+          {
+            'include': '#embedded-code'
+          }
+          {
+            'include': '#entities'
+          }
+        ]
+      }
+      {
+        'begin': '\''
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.string.begin.html'
+        'contentName': 'meta.toc-list.href.html'
+        'end': '\''
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.string.end.html'
+        'name': 'string.quoted.single.html'
+        'patterns': [
+          {
+            'include': '#embedded-code'
+          }
+          {
+            'include': '#entities'
+          }
+        ]
+      }
+      {
+        'include': '#unquoted-attribute'
+      }
+    ]
+
+'tag-rel-attribute':
+    'begin': '\\b(rel)\\b\\s*(=)\\s*'
+    'captures':
+      '1':
+        'name': 'entity.other.attribute-name.rel.html'
+      '2':
+        'name': 'punctuation.separator.key-value.html'
+    'end': '(?<=\'|")|(?=\\s|>)'
+    'name': 'meta.attribute-with-value.rel.html'
+    'patterns': [
+      {
+        'begin': '"'
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.string.begin.html'
+        'contentName': 'meta.toc-list.rel.html'
+        'end': '"'
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.string.end.html'
+        'name': 'string.quoted.double.html'
+        'patterns': [
+          {
+            'include': '#embedded-code'
+          }
+          {
+            'include': '#entities'
+          }
+        ]
+      }
+      {
+        'begin': '\''
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.string.begin.html'
+        'contentName': 'meta.toc-list.rel.html'
+        'end': '\''
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.string.end.html'
+        'name': 'string.quoted.single.html'
+        'patterns': [
+          {
+            'include': '#embedded-code'
+          }
+          {
+            'include': '#entities'
+          }
+        ]
+      }
+      {
+        'include': '#unquoted-attribute'
+      }
+    ]
+
+
+'link':
+  'begin': '(</?)((?i:link)\\b)'
+  'beginCaptures':
+    '1':
+      'name': 'punctuation.definition.tag.begin.html'
+    '2':
+      'name': 'entity.name.tag.inline.link.html'
+  'end': '((?: ?/)?>)'
+  'endCaptures':
+    '1':
+      'name': 'punctuation.definition.tag.end.html'
+  'name': 'meta.tag.inline.link.html'
+  'patterns': [
+    {
+      'include': '#tag-stuff'
+    }
+  ]
