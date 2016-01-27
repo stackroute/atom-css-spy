@@ -59,4 +59,7 @@ module.exports =
         list = wordList[editor.getPath()].suggTrie.wordsWithPrefix "."+prefix
         suggestions = []
         suggestions.push({"text": eachWord?.substring(1,eachWord?.length), "type": "class"}) for eachWord in list if list?
+        suggestions.sort (a,b)->
+          return a if a.length < b.length
+          return b
         resolve suggestions
