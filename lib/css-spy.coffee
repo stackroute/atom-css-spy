@@ -51,7 +51,7 @@ module.exports =
             for row in [(startRow-1)..(endRow+1)]
               line = lines[row]
               if line?.match(/\s*rel\s*=\s*('|")\s*(\w*)\s*\1/i)?[2] is "stylesheet"
-                cssFile = line.match(/\s*href\s*=\s*('|")\s*([\-.\/\\\w]+)\s*\1/i)[2]
+                cssFile = line.match(/\s*href\s*=\s*('|")\s*([\-.\/\\\w]+)\s*\1/i)?[2]
                 currentPath = currentPath + '/' unless cssFile?[0] is '/'
                 if !(currentPath+cssFile in provider.wordList[editor.getPath()]?.cssFiles?)
                   try
