@@ -29,10 +29,10 @@ module.exports =
         provider.makeWordList(editor)
         provider.refreshWordList(editor)
         for cssFile in provider.wordList[editor.getPath()].cssFiles
-          fs.watch(cssFile, (event) ->
+          fs.watchFile(cssFile, (event) ->
             provider.makeWordList(editor)
             provider.refreshWordList(editor)
-          )
+          ) unless cssFile.match(/http/i)?.index == 0
 
         changes = []
 
@@ -43,7 +43,7 @@ module.exports =
           #TODO-v2: have to include for absolute path and urls
           while changes.length != 0
             change = changes.pop()
-            provider.wordList[editor.getPath()]?.cssFiles = []
+            # provider.wordList[editor.getPath()]?.cssFiles = []
             currentPath = path.dirname editor.getPath()
             startRow = Math.min.apply @, [change?.newRange.start.row, change?.newRange.end.row, change?.oldRange.start.row, change?.oldRange.end.row]
             endRow = Math.max.apply @, [change?.newRange.start.row, change?.newRange.end.row, change?.oldRange.start.row, change?.oldRange.end.row]
@@ -51,13 +51,13 @@ module.exports =
             for row in [(startRow-1)..(endRow+1)]
               line = lines[row]
               if line?.match(/\s*rel\s*=\s*('|")\s*(\w*)\s*\1/i)?[2] is "stylesheet"
-                cssFile = line.match(/\s*href\s*=\s*('|")\s*([\-.\/\\\w]+)\s*\1/i)?[2]
+                cssFile = line.match(/\s*href\s*=\s*('|")\s*([:\-.\/\\\w]+)\s*\1/i)?[2]
                 currentPath = currentPath + '/' unless cssFile?[0] is '/'
-                if !(currentPath+cssFile in provider.wordList[editor.getPath()]?.cssFiles?)
+                if !(currentPath+cssFile in provider.wordList[editor.getPath()]?.cssFiles or cssFile in provider.wordList[editor.getPath()]?.cssFiles)
                   try
                     fs.accessSync (currentPath+cssFile).trim(), fs.R_OK
-                    provider.wordList[editor.getPath()]?.cssFiles.push currentPath+cssFile
-                    fs.watch currentPath+cssFile, (event) ->
+                    # provider.wordList[editor.getPath()]?.cssFiles.push currentPath+cssFile
+                    fs.watchFile currentPath+cssFile, (event) ->
                       provider.makeWordList(editor)
                       provider.refreshWordList(editor)
                   catch err
